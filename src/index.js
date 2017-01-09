@@ -1,7 +1,15 @@
-var makeVectorMarkers = require('./VectorMarkers');
+import VectorMarkers from './VectorMarkers'
 
-module.exports = function(Leaflet) {
-  var VectorMarkers = makeVectorMarkers(Leaflet);
-  Leaflet.VectorMarkers = VectorMarkers;
-  return VectorMarkers;
+function extendLeaflet(Leaflet) {
+  Leaflet.VectorMarkers = VectorMarkers(Leaflet);
+  return Leaflet.VectorMarkers;
 }
+
+// If window.L is defined, presume it is Leaflet and extend it.0:w
+// Otherwise export a factory function (of suppled Leaflet) to be extended later.
+
+if (window.L) {
+  extendLeaflet(window.L);
+}
+
+export default extendLeaflet;

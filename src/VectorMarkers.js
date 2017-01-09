@@ -1,15 +1,12 @@
-var makeIcon = require('./Icon');
+import Icon from './Icon'
 
-module.exports = function(Leaflet) {
-  Icon = makeIcon(Leaflet);
+export default function(Leaflet) {
+  const IconClass = Icon(Leaflet);
   return {
-    version: '1.0.0',
-
-    Icon: Icon,
-
+    version: '0.0.6-looker',
+    Icon: IconClass,
     icon: function(options) {
-      return new Icon(options)
-    },
-  }
+      return new IconClass(options)
+    }
+  };
 }
-
