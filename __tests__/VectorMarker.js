@@ -1,7 +1,9 @@
 /* global describe, expect, it, jest */
 
-import { VectorMarkers } from '../src/'
+import L from 'leaflet';
+import MakeVectorMarkers from '../src/VectorMarkers'
 
+const VectorMarkers = MakeVectorMarkers(L);
 jest.unmock('leaflet')
 
 function addMarker(map, options) {
